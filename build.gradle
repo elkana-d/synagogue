@@ -1,0 +1,54 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+jar {
+	baseName = 'synagogue'
+	version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	//for jsp
+	compile("org.apache.tomcat.embed:tomcat-embed-jasper")
+	compile group: 'jstl', name: 'jstl', version: '1.2'
+
+	compile 'javax.servlet:jstl:1.2'
+
+	compile group: 'com.google.guava', name: 'guava', version: '11.0.2'
+	compile group: 'com.google.guava', name: 'guava', version: '11.0.2'
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile group: 'javax.inject', name: 'javax.inject', version: '1'
+	runtime('mysql:mysql-connector-java')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+
+	compile("org.webjars:jquery:2.0.3-1")
+
+	//compile group: 'org.webjars', name: 'kendo-ui-core', version: '2014.2.716'
+
+	//no need restart after change
+	compile("org.springframework.boot:spring-boot-devtools")
+
+
+
+
+}
