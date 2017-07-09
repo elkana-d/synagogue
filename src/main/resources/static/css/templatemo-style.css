@@ -239,7 +239,7 @@ button:focus { outline: none; }
 	border-radius: 0;
 	padding: 1rem 2rem;
 }
-#note, #firstName, #lastName {
+#note, #firstName, #lastName, #price {
     text-align:right;
     direction: rtl;
 }

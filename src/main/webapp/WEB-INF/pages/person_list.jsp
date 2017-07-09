@@ -51,7 +51,10 @@
                 </kendo:grid-column-command>
             </kendo:grid-column>
             <kendo:grid-column title="הערות" field="note" width="120px"/>
-            <kendo:grid-column title="מחיר" field="price" width="120px"/>
+            <kendo:grid-column title="מחיר" field="price" width="120px"
+            template='#:priceTemplate(price)#'
+
+            />
             <kendo:grid-column title="שם משפחה" field="lastName" width="120px" />
             <kendo:grid-column title="שם פרטי" field="firstName" width="120px"/>
 
@@ -96,30 +99,37 @@
 
     <script>
 
+    function priceTemplate(value)
+    {
+        if (value>=0)
+            return value;
+        else
+            return  -value + "-";
+    }
 
 
-(function ($, kendo) {
-                $.extend(true, kendo.ui.validator, {
-                     rules: { // custom rules
-                         productnamevalidation: function (input, params) {
-                             //check for the name attribute
-                             debugger;
-                             if (input.filter("[name='price']").length && input.val()) {
-                              return isNormalInteger(input.val());
-                                                         }
-                             return true;
-                         }
-                     },
-                     messages: { //custom rules messages
-                         productnamevalidation: "Product Name should start with capital letter"
-                     }
-                });
-            })(jQuery, kendo);
+    (function ($, kendo) {
+        $.extend(true, kendo.ui.validator, {
+             rules: { // custom rules
+                 productnamevalidation: function (input, params) {
+                     //check for the name attribute
+                     debugger;
+                     if (input.filter("[name='price']").length && input.val()) {
+                      return isNormalInteger(input.val());
+                                                 }
+                     return true;
+                 }
+             },
+             messages: { //custom rules messages
+                 productnamevalidation: "Product Name should start with capital letter"
+             }
+        });
+    })(jQuery, kendo);
 
     //if the string is isInteger can be "55.5"
     function isNormalInteger(str) {
         var n = Math.floor(Number(str));
-        return String(n) === str && n >= 0;
+        return String(n) === str;
     }
 
 

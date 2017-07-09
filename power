@@ -1,0 +1,12 @@
+//template='#:priceTemplate(price)#'
+
+/*
+    function priceTemplate(value)
+    {
+        if (value>=0)
+            return 1;
+        else
+
+    }
+*/
+
